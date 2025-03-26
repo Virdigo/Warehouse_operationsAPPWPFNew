@@ -1,0 +1,62 @@
+﻿<Page x:Class="Warehouse_operationsAPPWPF.Pages.OstatkiPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Warehouse_operationsAPPWPF.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="550" d:DesignWidth="1250"
+      Title="OstatkiPage" Background="#3b5998">
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Left">
+            <Button Name="BtnArrowLeft" Width="50" Height="50" Click="BtnArrowLeft_Click" Style="{StaticResource BorderlessButton}">
+                <Image Source="/Images/ArrowLeft.png" Stretch="Fill"/>
+            </Button>
+            <Button Name="BtnArrowRight" Width="50" Height="50" Click="BtnArrowRight_Click" Style="{StaticResource BorderlessButton}">
+                <Image Source="/Images/ArrowRight.png" Stretch="Fill"/>
+            </Button>
+        </StackPanel>
+
+        <Border Background="White" CornerRadius="10" Padding="20" Grid.Row="1">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,0">
+                    <TextBlock Text="Мин. количество:" FontSize="16" FontWeight="Bold" Foreground="#3b5998" VerticalAlignment="Center"/>
+                    <TextBox Name="MinQuantityFilterTextBox" Width="80" Margin="5,0" PreviewTextInput="FilterTextBox_PreviewTextInput"/>
+                    <TextBlock Text="Макс. количество:" FontSize="16" FontWeight="Bold" Foreground="#3b5998" VerticalAlignment="Center"/>
+                    <TextBox Name="MaxQuantityFilterTextBox" Width="80" Margin="5,0" PreviewTextInput="FilterTextBox_PreviewTextInput"/>
+                    <Button Content="Фильтр" Click="FilterButton_Click" Background="#3b5998" Foreground="White" Width="100" Margin="5,0"/>
+                </StackPanel>
+
+                <ListView Name="OstatkiListView" Height="300" Margin="0,10,0,0">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="ID" DisplayMemberBinding="{Binding id_Ostatki}" Width="70"/>
+                            <GridViewColumn Header="Склад" DisplayMemberBinding="{Binding WarehousesName}" Width="150"/>
+                            <GridViewColumn Header="Товар" DisplayMemberBinding="{Binding ProductName}" Width="150"/>
+                            <GridViewColumn Header="Количество остатков" DisplayMemberBinding="{Binding Quantity_Ostatki}" Width="250"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,0" >
+                    <Button x:Name="excel" Width="50" Height="50" Margin="10" Click="excel_Click" Style="{StaticResource BorderlessButton}" Background="#3b5998">
+                        <Image Source="/Images/excel.png" Stretch="Fill"/>
+                    </Button>
+                    <Button x:Name="PDF" Width="50" Height="50" Margin="10" Click="PDF_Click" Style="{StaticResource BorderlessButton}" Background="#3b5998">
+                        <Image Source="/Images/pdf.png" Stretch="Fill"/>
+                    </Button>
+                    <Button Content="Добавить" Click="AddOstatkiButton_Click" Background="#3b5998" Foreground="White" Width="150" Margin="5,0" Height="50"/>
+                    <Button Content="Редактировать" Click="EditOstatkiButton_Click" Background="#3b5998" Foreground="White" Width="150" Margin="5,0" Height="50"/>
+                    <Button Content="Удалить" Click="DeleteOstatkiButton_Click" Background="#D9534F" Foreground="White" Width="150" Margin="5,0" Height="50"/>
+                    <Button Content="Обновить" Click="LoadOstatki_Click" Background="#5BC0DE" Foreground="White" Width="150" Margin="5,0" Height="50"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Page>

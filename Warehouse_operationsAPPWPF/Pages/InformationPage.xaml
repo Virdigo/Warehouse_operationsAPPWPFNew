@@ -1,0 +1,60 @@
+﻿<Page x:Class="Warehouse_operationsAPPWPF.Pages.InformationPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Warehouse_operationsAPPWPF.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="550" d:DesignWidth="1250"
+      Title="InformationPage" Background="#3b5998">
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Left">
+            <Button Name="BtnArrowLeft" Width="50" Height="50" Click="BtnArrowLeft_Click" Style="{StaticResource BorderlessButton}">
+                <Image Source="/Images/ArrowLeft.png" Stretch="Fill"/>
+            </Button>
+            <Button Name="BtnArrowRight" Width="50" Height="50" Click="BtnArrowRight_Click" Style="{StaticResource BorderlessButton}">
+                <Image Source="/Images/ArrowRight.png" Stretch="Fill"/>
+            </Button>
+        </StackPanel>
+
+        <Border Background="White" CornerRadius="10" Padding="20" Grid.Row="1">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,0">
+                    <TextBlock Text="Мин. цена:" FontSize="16" FontWeight="Bold" Foreground="#3b5998" VerticalAlignment="Center"/>
+                    <TextBox Name="MinPriceFilterTextBox" Width="80" Margin="5,0" PreviewTextInput="FilterTextBox_PreviewTextInput"/>
+                    <TextBlock Text="Макс. цена:" FontSize="16" FontWeight="Bold" Foreground="#3b5998" VerticalAlignment="Center"/>
+                    <TextBox Name="MaxPriceFilterTextBox" Width="80" Margin="5,0" PreviewTextInput="FilterTextBox_PreviewTextInput"/>
+                    <Button Content="Фильтр" Click="FilterButton_Click" Background="#3b5998" Foreground="White" Width="100" Margin="5,0"/>
+                </StackPanel>
+
+                <ListView Name="InformationListView" Height="300" Margin="0,10,0,0">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="ID" DisplayMemberBinding="{Binding id_inf_doc}" Width="50"/>
+                            <GridViewColumn Header="Продукт" DisplayMemberBinding="{Binding ProductName}" Width="120"/>
+                            <GridViewColumn Header="Количество" DisplayMemberBinding="{Binding Quanity}" Width="120"/>
+                            <GridViewColumn Header="Документ" DisplayMemberBinding="{Binding Receipt_and_expense_documentsName}" Width="120"/>
+                            <GridViewColumn Header="Поставщик" DisplayMemberBinding="{Binding SuppliersName}" Width="120"/>
+                            <GridViewColumn Header="Стоимость" DisplayMemberBinding="{Binding Cost}" Width="120"/>
+                            <GridViewColumn Header="Цена" DisplayMemberBinding="{Binding Price}" Width="120"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,0">
+                    <Button Content="Добавить" Click="AddInformationButton_Click" Background="#3b5998" Foreground="White" Width="150" Margin="5,0"/>
+                    <Button Content="Редактировать" Click="EditInformationButton_Click" Background="#3b5998" Foreground="White" Width="150" Margin="5,0"/>
+                    <Button Content="Удалить" Click="DeleteInformationButton_Click" Background="#D9534F" Foreground="White" Width="150" Margin="5,0"/>
+                    <Button Content="Обновить" Click="LoadInformation_Click" Background="#5BC0DE" Foreground="White" Width="150" Margin="5,0"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Page>
+
