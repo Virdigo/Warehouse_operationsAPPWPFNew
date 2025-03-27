@@ -163,10 +163,10 @@ namespace Warehouse_operationsAPPWPF.Pages
                 cellRange.Text = ProductCurrent.id_Ostatki.ToString();
 
                 cellRange = paymentsTable.Cell(i + 2, 2).Range;
-                cellRange.Text = ProductCurrent.id_warehouses.ToString();
+                cellRange.Text = ProductCurrent.WarehousesName.ToString();
 
                 cellRange = paymentsTable.Cell(i + 2, 3).Range;
-                cellRange.Text = ProductCurrent.id_Product.ToString();
+                cellRange.Text = ProductCurrent.ProductName.ToString();
 
                 cellRange = paymentsTable.Cell(i + 2, 4).Range;
                 cellRange.Text = ProductCurrent.Quantity_Ostatki.ToString();
@@ -196,8 +196,8 @@ namespace Warehouse_operationsAPPWPF.Pages
             foreach (Ostatki item in printItems)
             {
                 worksheet.Cells[1][indexRows + 1] = indexRows;
-                worksheet.Cells[2][indexRows + 1] = item.id_warehouses;
-                worksheet.Cells[3][indexRows + 1] = item.id_Product;
+                worksheet.Cells[2][indexRows + 1] = item.WarehousesName;
+                worksheet.Cells[3][indexRows + 1] = item.ProductName;
                 worksheet.Cells[4][indexRows + 1] = item.Quantity_Ostatki;
 
                 indexRows++;
